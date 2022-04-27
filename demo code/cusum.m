@@ -14,6 +14,9 @@ function [stopping,tau_hat,statslog] = cusum(t, u, phi, Phi, B, T, mu0, mu1, A0,
 % S the stopping time. Returns -1 if there is no change.
 
 % update the CUSUM stat when event happens and at multiple of gamma
+
+%assert(T>max(t),'Event time exceeds T');
+%assert(prod(t(1:end-1)<t(2:end)),'Event time not sorted.')
 if nargin <10
     gamma = 2/sum(mu0);
 end
