@@ -7,7 +7,8 @@ function [A,mu,logl,n_iter] = MLE_EM(t,u,phi,Phi,B,T,A,mu,M)
 % network topology M
 
 %output: the MLE estimator A,mu, fitted log-likelihood logl.
-%assert(T>max(t),'event time exceeds T\n');
+%assert(T>max(t),'Event time exceeds T');
+%assert(prod(t(1:end-1)<t(2:end)),'Event time not sorted.')
 D = length(mu);
 n_iter = 0;
 A(A<1e-4) = 1e-4;
