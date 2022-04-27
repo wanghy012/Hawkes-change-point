@@ -6,6 +6,9 @@ function [stop_time, tau_hat, statslog] = score(t,u,phi,Phi,B,T,mu0,A0,w,b,gamma
 % b the threshold
 % gamma the update rate
 % M the topological structure of the network.
+
+%assert(T>max(t),'Event time exceeds T');
+%assert(prod(t(1:end-1)<t(2:end)),'Event time not sorted.')
 stop_time = -1;
 tau_hat = -1;
 K = ceil(w/gamma);
