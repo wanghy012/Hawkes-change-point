@@ -7,6 +7,9 @@ function [stop_time, tau_hat, statslog,n_EM_iter] = GLR(t,u,phi,Phi,B,T,mu0,A0,w
 % b the threshold
 % gamma the update rate
 % M the topological structure of the network.
+
+%assert(T>max(t),'Event time exceeds T');
+%assert(prod(t(1:end-1)<t(2:end)),'Event time not sorted.')
 Mu0 = sum(mu0);
 K = ceil(w/gamma);
 w = K*gamma;
